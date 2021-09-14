@@ -9,6 +9,13 @@ package dao;
  *
  * @author Noah McElroy
  */
-public class VendingMachinePersistenceException {
+public class VendingMachinePersistenceException extends Exception{
+    public VendingMachinePersistenceException(String message) {
+        super(message);
+    }
     
+    public VendingMachinePersistenceException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }
+

@@ -5,10 +5,22 @@
  */
 package dao;
 
+import dto.Product;
+import java.util.List;
+
 /**
  *
  * @author Noah McElroy
  */
-public class VendingMachineDao {
+public interface VendingMachineDao {
+    List<Product> DisplayAllProduct()throws VendingMachinePersistenceException;
     
+    Product addProduct(String name, Product product )throws VendingMachinePersistenceException;
+    
+    Product getProduct(String name)throws VendingMachinePersistenceException;
+    
+    Product removeProduct(String name)throws VendingMachinePersistenceException;
+            
+    Product editProduct(String name)throws VendingMachinePersistenceException;   
 }
+
