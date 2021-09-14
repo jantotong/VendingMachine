@@ -18,6 +18,10 @@ public class Product
     private BigDecimal price;
     private int qty;
 
+    public Product(String name) {
+        this.name = name;
+    }
+
     public Product(String name, BigDecimal price, int qty) {
         this.name = name;
         this.price = price;

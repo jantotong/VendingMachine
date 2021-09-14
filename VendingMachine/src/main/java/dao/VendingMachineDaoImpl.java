@@ -9,7 +9,9 @@ import dto.Product;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -56,7 +58,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
     public Product editProduct(String name) throws VendingMachinePersistenceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    private Product unmarshallStudent(String productAsText){
+    private Product unmarshallProduct(String productAsText){
 
         String[] productTokens = productAsText.split(DELIMITER);
 
@@ -67,31 +69,29 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         // the requirements of the Student constructor.
         Product productFromFile = new Product(productName);
 
-        // However, there are 3 remaining tokens that need to be set into the
-        // new student object. Do this manually by using the appropriate setters.
-
-        // Index 1 - FirstName
-        productFromFile.setFirstName(studentTokens[1]);
+        productFromFile.setPrice(new BigDecimal(productTokens[1]));
+        productFromFile.setQty(Integer.parseInt(productTokens[2]));
+        
 
 
-        return studentFromFile;
+        return productFromFile;
     }
-      /*  private void loadRoster() throws ClassRosterPersistenceException {
+    private void loadVending() throws VendingMachinePersistenceException {
         Scanner scanner;
 
         try {
             // Create Scanner for reading the file
             scanner = new Scanner(
                     new BufferedReader(
-                            new FileReader(ROSTER_FILE)));
+                            new FileReader(VENDING_FILE)));
         } catch (FileNotFoundException e) {
-            throw new ClassRosterPersistenceException(
-                    "-_- Could not load roster data into memory.", e);
+            throw new VendingMachinePersistenceException(
+                    "-_- Could not load vending machine data into memory.", e);
         }
         // currentLine holds the most recent line read from the file
         String currentLine;
         // currentStudent holds the most recent student unmarshalled
-        Student currentStudent;
+        Product currentProduct;
         // Go through ROSTER_FILE line by line, decoding each line into a 
         // Student object by calling the unmarshallStudent method.
         // Process while we have more lines in the file
@@ -99,13 +99,13 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
             // get the next line in the file
             currentLine = scanner.nextLine();
             // unmarshall the line into a Student
-            currentStudent = unmarshallStudent(currentLine);
+            currentProduct = unmarshallProduct(currentLine);
 
             // We are going to use the student id as the map key for our student object.
             // Put currentStudent into the map using student id as the key
-            students.put(currentStudent.getStudentId(), currentStudent);
+            products.put(currentProduct.getName(), currentProduct);
         }
         // close scanner
         scanner.close();
-    }*/
+    }
 }
