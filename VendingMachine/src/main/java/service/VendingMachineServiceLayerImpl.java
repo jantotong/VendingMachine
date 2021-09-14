@@ -5,6 +5,8 @@
  */
 package service;
 
+import dto.Product;
+
 /**
  *
  * @author Noah McElroy
@@ -34,4 +36,20 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     public void editProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
 
     }
+    
+    
+     private void validateProductData(Product item) throws VendingMachineDataValidationException 
+    {
+
+            if (item.getName() == null
+                    || item.getName().trim().length() == 0
+                    || item.getPrice() == null
+                    || item.getQty() <= 0) {
+
+                throw new VendingMachineDataValidationException(
+                        "ERROR: All fields [name,price,qty] are required.");
+        }
+    }
+    
+    
 }
