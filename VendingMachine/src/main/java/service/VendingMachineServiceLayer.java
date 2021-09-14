@@ -9,6 +9,19 @@ package service;
  *
  * @author Noah McElroy
  */
-public class VendingMachineServiceLayer {
-    
+public interface VendingMachineServiceLayer {
+
+    void addProduct() throws
+            InsufficientFundsException
+            ,NoItemInventoryException,
+            VendingMachineDuplicateNameException,
+            VendingMachinePersistenceException;
+
+    void DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException;
+
+    void getProduct() throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException;
+
+    void removeProduct () throws NoItemInventoryException, VendingMachinePersistenceException;
+
+    void editProduct () throws NoItemInventoryException, VendingMachinePersistenceException;
 }

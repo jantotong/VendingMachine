@@ -12,6 +12,7 @@ package ui;
  *
  * @author pierre
  */
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class UserIOConsoleImpl implements UserIO {
@@ -213,6 +214,24 @@ public class UserIOConsoleImpl implements UserIO {
             result = readDouble(msgPrompt);
         } while (result < min || result > max);
         return result;
+    }
+
+    @Override
+    public BigDecimal readBigDecimal(String prompt) 
+    {
+        while(true)
+        {
+            try{
+                System.out.println(prompt);
+                return new BigDecimal(console.nextLine());
+                
+            }catch(Exception e)
+            {
+                System.out.println("WRONG INPUT TRY AGAIN");
+            }
+        }
+        
+        
     }
 
 }
