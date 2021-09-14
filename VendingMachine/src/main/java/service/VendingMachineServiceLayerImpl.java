@@ -33,18 +33,16 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     @Override
     public void addProduct(String name, Product product) throws VendingMachineDataValidationException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException 
     {
-        //if(dao.getProduct(name)){}
-
-        // First check to see if there is alreay a student 
-        // associated with the given student's id
-        // If so, we're all done here - 
-        // throw a ClassRosterDuplicateIdException
+        // this method creates red error marker
+        // because it says that we should be 'aware' of :
         
         // VendingMachinePersistenceException
         
+        // and also beause 
         
+        // VendingMachineAuditDao AND VendingMachineAuditDaoImpl are empty for now.
         
-        
+        // red here
         if (dao.getProduct(name) != null) {
             throw new VendingMachineDuplicateNameException(
                     "ERROR: Could not create item named "
@@ -52,16 +50,13 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
                     + " already exists");
         }
 
-        // Now validate all the fields on the given Student object.  
-        // This method will throw an
-        // exception if any of the validation rules are violated.
+
         validateProductData(product);
 
-        // We passed all our business rules checks so go ahead 
-        // and persist the Student object
+        // red here also
         dao.addProduct(name, product);
 
-        // The student was successfully created, now write to the audit log
+        // The item was successfully created, now write to the audit log
         auditDao.writeAuditEntry(
                 "Product " + product.getName() + " CREATED.");
 
