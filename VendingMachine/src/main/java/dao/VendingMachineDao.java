@@ -13,7 +13,7 @@ import java.util.List;
  * @author Noah McElroy
  */
 public interface VendingMachineDao {
-    List<Product> DisplayAllProduct()throws VendingMachinePersistenceException;
+    List<Product> displayAllProducts()throws VendingMachinePersistenceException;
     
     Product addProduct(String name, Product product )throws VendingMachinePersistenceException;
     
