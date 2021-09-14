@@ -5,23 +5,27 @@
  */
 package service;
 
+import dto.Product;
+
+import java.util.List;
+
 /**
  *
  * @author Noah McElroy
  */
 public interface VendingMachineServiceLayer {
 
-    void addProduct() throws
+    Product addProduct(String name, Product product) throws
             InsufficientFundsException
             ,NoItemInventoryException,
             VendingMachineDuplicateNameException,
             VendingMachinePersistenceException;
 
-    void DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException;
+    List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException;
 
-    void getProduct() throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException;
+    Product getProduct(String name) throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException;
 
-    void removeProduct () throws NoItemInventoryException, VendingMachinePersistenceException;
+    Product removeProduct (String name) throws NoItemInventoryException, VendingMachinePersistenceException;
 
-    void editProduct () throws NoItemInventoryException, VendingMachinePersistenceException;
+    Product editProduct (String name) throws NoItemInventoryException, VendingMachinePersistenceException;
 }

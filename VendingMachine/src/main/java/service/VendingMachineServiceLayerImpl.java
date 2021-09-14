@@ -5,51 +5,59 @@
  */
 package service;
 
+import dao.VendingMachineDao;
 import dto.Product;
 
+import java.util.List;
+
 /**
- *
  * @author Noah McElroy
  */
-public class VendingMachineServiceLayerImpl implements VendingMachineServiceLayer{
-    @Override
-    public void addProduct() throws InsufficientFundsException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("");
+
+public class VendingMachineServiceLayerImpl implements VendingMachineServiceLayer {
+
+    VendingMachineDao dao;
+
+    public VendingMachineServiceLayerImpl(VendingMachineDao dao) {
+        this.dao = dao;
     }
 
     @Override
-    public void DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-
+    public Product addProduct(String name, Product product) throws InsufficientFundsException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException {
+        //if(dao.getProduct(name)){}
+        throw new UnsupportedOperationException("No Support Yet");
     }
 
     @Override
-    public void getProduct() throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException {
-
+    public List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
+        throw new UnsupportedOperationException("No Support Yet");
     }
 
     @Override
-    public void removeProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-
+    public Product getProduct(String name) throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException {
+        throw new UnsupportedOperationException("No Support Yet");
     }
 
     @Override
-    public void editProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-
+    public Product removeProduct(String name) throws NoItemInventoryException, VendingMachinePersistenceException {
+        throw new UnsupportedOperationException("No Support Yet");
     }
-    
-    
-     private void validateProductData(Product item) throws VendingMachineDataValidationException 
-    {
 
-            if (item.getName() == null
-                    || item.getName().trim().length() == 0
-                    || item.getPrice() == null
-                    || item.getQty() <= 0) {
+    @Override
+    public Product editProduct(String name) throws NoItemInventoryException, VendingMachinePersistenceException {
+        throw new UnsupportedOperationException("No Support Yet");
+    }
 
-                throw new VendingMachineDataValidationException(
-                        "ERROR: All fields [name,price,qty] are required.");
+    private void validateProductData(Product item) throws VendingMachineDataValidationException {
+
+        if (item.getName() == null
+                || item.getName().trim().length() == 0
+                || item.getPrice() == null
+                || item.getQty() <= 0) {
+
+            throw new VendingMachineDataValidationException(
+                    "ERROR: All fields [name,price,qty] are required.");
         }
     }
-    
-    
+
 }
