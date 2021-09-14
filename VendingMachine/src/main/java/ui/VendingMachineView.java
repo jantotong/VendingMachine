@@ -5,10 +5,116 @@
  */
 package ui;
 
+import dto.Product;
+import java.math.BigDecimal;
+import java.util.List;
+
 /**
  *
  * @author Noah McElroy
  */
-public class VendingMachineView {
+public class VendingMachineView 
+{
     
-}
+    UserIO io;
+    
+    public VendingMachineView(UserIO io)
+            {
+                this.io = io;
+            }
+    /*
+    add
+    remove
+    edit 
+    buy
+    exit
+    */
+    
+    public int printMenuAndGetSelection() {
+        io.print("Main Menu");
+        io.print("1. Add item to the vending machine");
+        io.print("2. Remove item from the vending machine");
+        io.print("3. Edit item from the vending machine");
+        io.print("\n4. Buy a product");
+        io.print("\n5. Exit");
+
+        return io.readInt("Please select from the above choices.", 1, 5);
+    }
+    
+    public Product getNewStudentInfo() 
+    {
+        String itemName = io.readString("Please enter Item's name");
+        BigDecimal price = io.readBigDecimal("Please enter Item's price");
+        int qty = io.readInt("Please enter Item's quantity");
+        Product item = new Product(itemName,price,qty);
+        return item;
+    }
+    
+    public void displayProduct(Product product) 
+    {
+        if (product != null) {
+
+            io.print("\nDisplaying information about :");
+            io.print("Item : " + product.getName());
+            io.print("Price : "+ product.getPrice().toString());
+            io.print("");
+        } else {
+            io.print("\nNo such student.");
+        }
+        io.readString("Please hit enter to continue.");
+    }
+    
+    public void addItemBannerDisplay()
+    {
+        io.print("====== ADD ITEM ======");
+    }
+    
+    public void addItemSuccessDisplay()
+    {
+        io.print("ADD ITEM SUCCESSFUL");
+    }
+    public void removeItemBannerDisplay(List<Product> items)
+    {
+
+        io.print("==== REMOVE ITEM ====");
+    }
+    
+    public void removeItemSuccessDisplay()
+    {
+        io.print("REMOVE ITEM SUCCESSFUL");
+    }
+    
+    
+    public void editItemBannerDisplay()
+    {
+        io.print("===== EDIT ITEM =====");
+    }
+    
+    public void editItemSuccessDisplay()
+    {
+        io.print("EDIT ITEM SUCCESSFUL");
+    }
+    
+    public String getItemSelection()
+    {
+        return io.readString("Select an Item");
+        
+    }
+    
+    public void displayExitBanner() {
+        io.print("Good Bye!!!");
+    }
+
+    public void displayUnknownCommandBanner() {
+        io.print("Unknown Command!!!");
+    }
+
+
+    public void displayErrorMessage(String errorMsg) {
+        io.print("=== ERROR ===");
+        io.print(errorMsg);
+    }
+    
+    }
+    
+    

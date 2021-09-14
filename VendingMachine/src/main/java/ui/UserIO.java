@@ -1,5 +1,7 @@
 package ui;
 
+import java.math.BigDecimal;
+
 
 
 /*
@@ -33,5 +35,8 @@ public interface UserIO {
     long readLong(String prompt, long min, long max);
 
     String readString(String prompt);
+    
+    BigDecimal readBigDecimal(String prompt);
+    
     
 }
