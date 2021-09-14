@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0eb48462-752e-4c28-be97-10c5e94a5fe5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineDuplicateNameException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachinePersistenceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineDataValidationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineDuplicateIdException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1y961vVk8shk5JskzbHTD7Qd6Hn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0eb48462-752e-4c28-be97-10c5e94a5fe5" name="Changes" comment="" />
+      <created>1631651246141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631651246141</updated>
+      <workItem from="1631651247343" duration="8000" />
+      <workItem from="1631651260622" duration="2544000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
