@@ -9,6 +9,9 @@ import dto.Product;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,7 +38,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
     }
 
     @Override
-    public List<Product> DisplayAllProduct() throws VendingMachinePersistenceException {
+    public List<Product> displayAllProducts() throws VendingMachinePersistenceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -107,5 +110,65 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         }
         // close scanner
         scanner.close();
+    }
+    
+     private String marshallProduct(Product aProduct){
+        // We need to turn a Student object into a line of text for our file.
+        // For example, we need an in memory object to end up like this:
+        // 4321::Charles::Babbage::Java-September1842
+
+        // It's not a complicated process. Just get out each property,
+        // and concatenate with our DELIMITER as a kind of spacer. 
+
+        // Start with the student id, since that's supposed to be first.
+        String productAsText = aProduct.getName() + DELIMITER;
+
+        // add the rest of the properties in the correct order:
+
+        // FirstName
+        productAsText += aProduct.getPrice()+ DELIMITER;
+
+        // LastName
+        productAsText += aProduct.getQty();
+
+
+
+        // We have now turned a student to text! Return it!
+        return productAsText;
+    } 
+
+       /**
+     * Writes all students in the roster out to a ROSTER_FILE.  See loadRoster
+     * for file format.
+     * 
+     * @throws ClassRosterDaoException if an error occurs writing to the file
+     */
+    private void writeRoster() throws VendingMachinePersistenceException {
+        // NOTE FOR APPRENTICES: We are not handling the IOException - but
+        // we are translating it to an application specific exception and 
+        // then simple throwing it (i.e. 'reporting' it) to the code that
+        // called us.  It is the responsibility of the calling code to 
+        // handle any errors that occur.
+        PrintWriter out;
+
+        try {
+            out = new PrintWriter(new FileWriter(VENDING_FILE));
+        } catch (IOException e) {
+            throw new VendingMachinePersistenceException(
+                    "Could not save vending machine data.", e);
+        }
+
+        String productAsText;
+        List<Product> productList = this.displayAllProducts();
+        for (Product currentProduct : productList) {
+            // turn a Student into a String
+            productAsText = marshallProduct(currentProduct);
+            // write the Student object to the file
+            out.println(productAsText);
+            // force PrintWriter to write line to the file
+            out.flush();
+        }
+        // Clean up
+        out.close();
     }
 }
