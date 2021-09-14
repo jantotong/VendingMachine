@@ -65,17 +65,19 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     
     @Override
     public List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+        return dao.getInventory()
     }
 
     @Override
     public Product getProduct(String name) throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+        return dao.getProduct(name);
     }
 
     @Override
-    public Product removeProduct(String name) throws NoItemInventoryException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+    public Product removeProduct(String name) throws VendingMachinePersistenceException , NoItemInventoryException {
+        Product returnedValue =  dao.removeProduct(name);
+        auditDao.writeAuditEntry("Product item named : " + name + " has been successfully removed.");
+        return returnedValue;
     }
 
     @Override

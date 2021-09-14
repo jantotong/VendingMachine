@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -170,5 +171,13 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         }
         // Clean up
         out.close();
+    }
+
+    @Override
+    public List<Product> getInventory() throws VendingMachinePersistenceException 
+    {
+        loadVending();
+        List<Product> returnValue = new ArrayList<>(products.values());
+        return returnValue;
     }
 }

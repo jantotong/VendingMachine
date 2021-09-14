@@ -35,13 +35,14 @@ public class VendingMachineView
         io.print("1. Add item to the vending machine");
         io.print("2. Remove item from the vending machine");
         io.print("3. Edit item from the vending machine");
-        io.print("\n4. Buy a product");
-        io.print("\n5. Exit");
+        io.print("4. Buy a product");
+        io.print("5. Get Inventory");
+        io.print("6. Exit");
 
-        return io.readInt("Please select from the above choices.", 1, 5);
+        return io.readInt("Please select from the above choices.", 1, 6);
     }
     
-    public Product getNewStudentInfo() 
+    public Product getNewProductInfo() 
     {
         String itemName = io.readString("Please enter Item's name");
         BigDecimal price = io.readBigDecimal("Please enter Item's price");
@@ -115,6 +116,16 @@ public class VendingMachineView
         io.print(errorMsg);
     }
     
+
+    public void getInventoryBannerDisplay()
+    {
+        io.print("============================");
+        io.print("========= INVENTORY ========");
     }
+    
+    
+
+    
+}
     
     
