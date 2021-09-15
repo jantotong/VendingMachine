@@ -5,6 +5,7 @@
  */
 package service;
 
+import dao.VendingMachineAuditDao;
 import dao.VendingMachineDao;
 import dto.Product;
 
@@ -16,31 +17,67 @@ import java.util.List;
 
 public class VendingMachineServiceLayerImpl implements VendingMachineServiceLayer {
 
-    VendingMachineDao dao;
+    private VendingMachineDao dao;
+    private VendingMachineAuditDao auditDao;
+
 
     public VendingMachineServiceLayerImpl(VendingMachineDao dao) {
         this.dao = dao;
     }
 
+    public VendingMachineServiceLayerImpl(VendingMachineDao dao, VendingMachineAuditDao auditDao) {
+        this.dao = dao;
+        this.auditDao = auditDao;
+    }
+
     @Override
-    public Product addProduct(String name, Product product) throws InsufficientFundsException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException {
-        //if(dao.getProduct(name)){}
-        throw new UnsupportedOperationException("No Support Yet");
+    public void addProduct(String name, Product product) throws VendingMachineDataValidationException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException
+    {
+        // this method creates red error marker
+        // because it says that we should be 'aware' of :
+
+        // VendingMachinePersistenceException
+
+        // and also beause
+
+        // VendingMachineAuditDao AND VendingMachineAuditDaoImpl are empty for now.
+
+        // red here
+        if (dao.getProduct(name) != null) {
+            throw new VendingMachineDuplicateNameException(
+                    "ERROR: Could not create item named "
+                            + product.getName()
+                            + " already exists");
+        }
+
+
+        validateProductData(product);
+
+        // red here also
+        dao.addProduct(name, product);
+
+        // The item was successfully created, now write to the audit log
+        auditDao.writeAuditEntry(
+                "Product " + product.getName() + " CREATED.");
+
+
     }
 
     @Override
     public List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+        return dao.getInventory()
     }
 
     @Override
     public Product getProduct(String name) throws NoItemInventoryException, InsufficientFundsException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+        return dao.getProduct(name);
     }
 
     @Override
-    public Product removeProduct(String name) throws NoItemInventoryException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+    public Product removeProduct(String name) throws VendingMachinePersistenceException , NoItemInventoryException {
+        Product returnedValue =  dao.removeProduct(name);
+        auditDao.writeAuditEntry("Product item named : " + name + " has been successfully removed.");
+        return returnedValue;
     }
 
     @Override

@@ -15,11 +15,7 @@ import java.util.List;
  */
 public interface VendingMachineServiceLayer {
 
-    Product addProduct(String name, Product product) throws
-            InsufficientFundsException
-            ,NoItemInventoryException,
-            VendingMachineDuplicateNameException,
-            VendingMachinePersistenceException;
+    void addProduct(String name, Product product) throws VendingMachineDataValidationException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException;
 
     List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException;
 

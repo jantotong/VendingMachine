@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eb48462-752e-4c28-be97-10c5e94a5fe5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineDuplicateNameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachinePersistenceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineDataValidationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineDuplicateIdException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
     </list>
@@ -67,6 +64,7 @@
       <updated>1631651246141</updated>
       <workItem from="1631651247343" duration="8000" />
       <workItem from="1631651260622" duration="2544000" />
+      <workItem from="1631714346517" duration="421000" />
     </task>
     <servers />
   </component>
@@ -83,5 +81,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
