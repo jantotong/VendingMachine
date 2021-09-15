@@ -15,9 +15,9 @@ import java.util.*;
 public class Change {
 
     private BigDecimal total;
-    private BigDecimal quarterValue = new BigDecimal("25");
-    private BigDecimal dimeValue = new BigDecimal("10");
-    private BigDecimal nickelValue = new BigDecimal("5");
+    private BigDecimal quarterValue = new BigDecimal("0.25");
+    private BigDecimal dimeValue = new BigDecimal("0.10");
+    private BigDecimal nickelValue = new BigDecimal("0.05");
 
     public Change (BigDecimal total){
         this.total = total;

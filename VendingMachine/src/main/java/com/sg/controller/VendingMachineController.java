@@ -116,6 +116,7 @@ public class VendingMachineController {
         for (Product allProduct : allProducts) {
             view.displayProduct(allProduct);
         }
+        view.getInventorySucessDisplay();
     }
 
     private void buyItem() 
@@ -178,6 +179,7 @@ public class VendingMachineController {
         } catch (VendingMachinePersistenceException ex) {
             Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        view.editItemSuccessDisplay();
     }
 
     private void removeItem() {
@@ -193,9 +195,7 @@ public class VendingMachineController {
         }
     }
     
-    private enum changesType {
-        QUARTERS, DIMES, NICKELS, PENNIES
-    }
+    
     
     
 }

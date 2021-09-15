@@ -65,9 +65,9 @@ public class VendingMachineView
             io.print("Qty : " + product.getQty());
             io.print("");
         } else {
-            io.print("\nNo such student.");
+            io.print("\nNo such item.");
         }
-        io.readString("Please hit enter to continue.");
+        //io.readString("Please hit enter to continue.");
     }
     
     public void addItemBannerDisplay()
@@ -132,6 +132,11 @@ public class VendingMachineView
     {
         io.print("============================");
         io.print("========= INVENTORY ========");
+    }
+    
+    public void getInventorySucessDisplay()
+    {
+        io.readString("Please hit enter to continue.");
     }
 
     public String getItemName() {
