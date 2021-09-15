@@ -130,6 +130,21 @@ public class VendingMachineView
     }
     
     
+    public void buyItemBannerDisplay()
+    {
+        io.print("====================");
+        io.print("===== Buy Item =====");
+    }
+    
+    public void buyItemSuccessDisplay()
+    {
+        io.print("YOU SUCCESSFULLY BOUGH AN ITEM");
+    }
+
+    public BigDecimal getAmount() {
+        return io.readBigDecimal("HOW MUCH MONEY DO YOU HAVE?");
+    }
+    
 
     
 }

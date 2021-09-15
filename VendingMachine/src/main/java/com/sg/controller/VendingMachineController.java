@@ -18,6 +18,7 @@ import com.sg.service.VendingMachineServiceLayer;
 import com.sg.ui.UserIO;
 import com.sg.ui.UserIOConsoleImpl;
 import com.sg.ui.VendingMachineView;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +33,8 @@ public class VendingMachineController {
     private VendingMachineView view;
     private UserIO io = new UserIOConsoleImpl();
     private VendingMachineServiceLayer service;
+    
+    private BigDecimal cash = new BigDecimal("0.00");
 
     @Autowired
     public VendingMachineController(VendingMachineView view, VendingMachineServiceLayer slayer) {
@@ -113,8 +116,38 @@ public class VendingMachineController {
         }
     }
 
-    private void buyItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void buyItem() 
+    {
+        // to do
+        // implement logic
+        view.buyItemBannerDisplay();
+        
+        cash = view.getAmount();
+        
+        String name = view.getItemName();
+        try
+        {
+            if (service.getProduct(name) != null && service.getProduct(name).getQty()>0 && cash.doubleValue() >= service.getProduct(name).getPrice().doubleValue())
+            {
+                cash = new BigDecimal( cash.doubleValue() - service.getProduct(name).getPrice().doubleValue());
+            }
+        }catch (Exception e)
+        {
+            System.out.println("FATAL ERROR");
+        }
+        
+        view.buyItemSuccessDisplay();
+        
+        // VARIABLE CASH NOW HOLDS THE MONEY
+        
+        // TO DO
+        // DISPLAY CHANGE
+        // HERE
+        
+        // THEN RESET CASH VARIABLE
+        
+        cash = new BigDecimal("0.00");
+        
     }
 
     private void editItem() {
