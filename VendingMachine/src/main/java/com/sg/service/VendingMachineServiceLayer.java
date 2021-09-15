@@ -25,4 +25,6 @@ public interface VendingMachineServiceLayer {
     Product removeProduct (String name) throws NoItemInventoryException, VendingMachinePersistenceException;
 
     Product editProduct (String name) throws NoItemInventoryException, VendingMachinePersistenceException;
+
+    public void reduceStockByOne(String name);
 }

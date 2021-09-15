@@ -24,5 +24,7 @@ public interface VendingMachineDao {
     Product editProduct(String name)throws VendingMachinePersistenceException;   
     
     List<Product> getInventory() throws VendingMachinePersistenceException;
+
+    public void reduceStockByOne(String name);
 }
 

@@ -102,4 +102,11 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         }
     }
 
+    @Override
+    public void reduceStockByOne(String name) {
+        
+        dao.reduceStockByOne(name);
+        
+    }
+
 }

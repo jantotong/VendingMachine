@@ -19,11 +19,11 @@ public class Change {
     private BigDecimal dimeValue = new BigDecimal("10");
     private BigDecimal nickelValue = new BigDecimal("5");
 
-    Change (BigDecimal total){
+    public Change (BigDecimal total){
         this.total = total;
     }
 
-    private enum changesType {
+    public enum changesType {
         QUARTERS, DIMES, NICKELS, PENNIES
     }
 

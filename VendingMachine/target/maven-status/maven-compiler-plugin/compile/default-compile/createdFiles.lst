@@ -15,5 +15,6 @@ com/sg/dto/Change.class
 com/sg/dao/VendingMachineAuditDaoFileImpl.class
 com/sg/dto/Change$changesType.class
 com/sg/dao/VendingMachineDaoImpl.class
+com/sg/controller/VendingMachineController$changesType.class
 com/sg/ui/UserIOConsoleImpl.class
 com/sg/controller/VendingMachineController.class

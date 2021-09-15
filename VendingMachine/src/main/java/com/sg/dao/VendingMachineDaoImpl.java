@@ -225,4 +225,14 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         List<Product> returnValue = new ArrayList<>(products.values());
         return returnValue;
     }
+
+    @Override
+    public void reduceStockByOne(String name) {
+        
+        Product temp = products.get(name);
+        temp.setQty(temp.getQty() -1 );
+        
+        products.replace(name, temp);
+        
+    }
 }

@@ -5,9 +5,11 @@
  */
 package com.sg.ui;
 
+import com.sg.dto.Change;
 import com.sg.dto.Product;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /**
@@ -144,7 +146,22 @@ public class VendingMachineView
     public BigDecimal getAmount() {
         return io.readBigDecimal("HOW MUCH MONEY DO YOU HAVE?");
     }
+
+    public void displayChange(Map<Change.changesType, BigDecimal> changemap) {
+        
+        for (Map.Entry<Change.changesType, BigDecimal> entry : changemap.entrySet()) {
+            io.print(entry.getKey().toString() + " : " + entry.getValue());
+        }
+        
+        
+        
+    }
     
+    
+    public void displayChangeBanner()
+    {
+        io.print("HERE'S YOUR CHANGE");
+    }
 
     
 }

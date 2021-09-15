@@ -6,6 +6,7 @@
 package com.sg.controller;
 
 import com.sg.dao.VendingMachinePersistenceException;
+import com.sg.dto.Change;
 import com.sg.dto.Product;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ import com.sg.ui.UserIO;
 import com.sg.ui.UserIOConsoleImpl;
 import com.sg.ui.VendingMachineView;
 import java.math.BigDecimal;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -130,6 +132,7 @@ public class VendingMachineController {
             if (service.getProduct(name) != null && service.getProduct(name).getQty()>0 && cash.doubleValue() >= service.getProduct(name).getPrice().doubleValue())
             {
                 cash = new BigDecimal( cash.doubleValue() - service.getProduct(name).getPrice().doubleValue());
+                service.reduceStockByOne(name);
             }
         }catch (Exception e)
         {
@@ -137,6 +140,17 @@ public class VendingMachineController {
         }
         
         view.buyItemSuccessDisplay();
+        
+        
+        /*
+        Map<changesType, BigDecimal> exchangeTotal()
+        */
+        Change change = new Change(cash);
+        
+        Map<Change.changesType,BigDecimal> changemap = change.exchangeTotal();
+        
+        
+        view.displayChange(changemap);
         
         // VARIABLE CASH NOW HOLDS THE MONEY
         
@@ -178,4 +192,10 @@ public class VendingMachineController {
             Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private enum changesType {
+        QUARTERS, DIMES, NICKELS, PENNIES
+    }
+    
+    
 }
