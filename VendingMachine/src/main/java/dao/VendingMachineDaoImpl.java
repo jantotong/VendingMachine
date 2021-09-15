@@ -19,12 +19,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import ui.UserIO;
+import ui.UserIOConsoleImpl;
 
 /**
  *
  * @author Noah McElroy
  */
 public class VendingMachineDaoImpl implements VendingMachineDao {
+    private UserIO io = new UserIOConsoleImpl();
     private final String VENDING_FILE;
     public static final String DELIMITER = "::";
     
@@ -54,7 +57,8 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
 
     @Override
     public Product getProduct(String name) throws VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        loadVending();
+        return products.get(name);
     }
 
     @Override
@@ -67,7 +71,39 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
 
     @Override
     public Product editProduct(String name) throws VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        loadVending(); 
+        while(!products.containsKey(name)){
+          name = io.readString("previous item name is not in the vending machine please enter a available product");
+        }
+        io.print("What would you like to change");
+        io.print("1. Edit product name");
+        io.print("2. Edit product price");
+        io.print("3. Edit product quanitity");
+        Product EditedProduct = products.get(name);
+        int choice =io.readInt("Please select from the above choices.", 1, 3);
+        switch(choice){
+            case 1:
+               //EditedDVD.setTitle(io.readString("Enter the edited title"));
+               //dvds.remove(title);
+               //in order to prevent duplication need to delete old copy and add the new version
+               String newProductName =io.readString("Enter the edited product name");
+               Product ProductFromFile = new Product(newProductName,EditedProduct.getPrice(),EditedProduct.getQty());
+               products.remove(name);
+               products.put(newProductName, ProductFromFile);
+               break;
+            case 2:
+                String price = io.readString("Please enter the new price");
+                EditedProduct.setPrice(new BigDecimal(price));
+                //EditedDVD.setReleaseDate(LocalDate.MAX);
+                break;
+            case 3:
+                EditedProduct.setQty(io.readInt("Please Enter the new quanitity amount."));
+                break;
+            default:
+                break;
+        }
+        writeVending();
+        return EditedProduct;
     }
     private Product unmarshallProduct(String productAsText){
 
