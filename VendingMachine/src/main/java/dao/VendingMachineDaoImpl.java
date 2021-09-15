@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -38,13 +39,17 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
     }
 
     @Override
-    public List<Product> displayAllProducts() throws VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Product> displayAllProducts() throws VendingMachinePersistenceException {//not sure about this one
+        loadVending();
+        return new ArrayList(products.values());
     }
 
     @Override
     public Product addProduct(String name, Product product) throws VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            loadVending();
+            Product newProduct = products.put(name, product);
+            writeVending();
+            return newProduct;
     }
 
     @Override
@@ -54,7 +59,10 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
 
     @Override
     public Product removeProduct(String name) throws VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        loadVending();
+        Product removedProduct = products.remove(name);
+        writeVending();
+        return removedProduct;
     }
 
     @Override
@@ -143,7 +151,7 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
      * 
      * @throws ClassRosterDaoException if an error occurs writing to the file
      */
-    private void writeRoster() throws VendingMachinePersistenceException {
+    private void writeVending() throws VendingMachinePersistenceException {
         // NOTE FOR APPRENTICES: We are not handling the IOException - but
         // we are translating it to an application specific exception and 
         // then simple throwing it (i.e. 'reporting' it) to the code that
@@ -170,5 +178,13 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         }
         // Clean up
         out.close();
+    }
+
+    @Override
+    public List<Product> getInventory() throws VendingMachinePersistenceException 
+    {
+        loadVending();
+        List<Product> returnValue = new ArrayList<>(products.values());
+        return returnValue;
     }
 }
