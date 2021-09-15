@@ -179,4 +179,12 @@ public class VendingMachineDaoImpl implements VendingMachineDao {
         // Clean up
         out.close();
     }
+
+    @Override
+    public List<Product> getInventory() throws VendingMachinePersistenceException 
+    {
+        loadVending();
+        List<Product> returnValue = new ArrayList<>(products.values());
+        return returnValue;
+    }
 }
