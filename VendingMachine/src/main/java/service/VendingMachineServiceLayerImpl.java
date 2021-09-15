@@ -7,6 +7,7 @@ package service;
 
 import dao.VendingMachineAuditDao;
 import dao.VendingMachineDao;
+import dao.VendingMachinePersistenceException;
 import dto.Product;
 
 import java.util.List;
@@ -65,7 +66,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     
     @Override
     public List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-        return dao.getInventory()
+        return dao.getInventory();
     }
 
     @Override
