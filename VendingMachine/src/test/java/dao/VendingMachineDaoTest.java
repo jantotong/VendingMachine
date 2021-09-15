@@ -5,7 +5,10 @@
  */
 package dao;
 
-import dto.Product;
+import com.sg.dao.VendingMachineDaoImpl;
+import com.sg.dao.VendingMachinePersistenceException;
+import com.sg.dao.VendingMachineDao;
+import com.sg.dto.Product;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;

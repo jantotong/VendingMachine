@@ -5,23 +5,44 @@
  */
 package vendingMachine;
 
-import controller.VendingMachineController;
-import dao.VendingMachineAuditDao;
-import dao.VendingMachineAuditDaoFileImpl;
-import dao.VendingMachineDao;
-import dao.VendingMachineDaoImpl;
-import service.VendingMachineServiceLayer;
-import service.VendingMachineServiceLayerImpl;
-import ui.UserIO;
-import ui.UserIOConsoleImpl;
-import ui.VendingMachineView;
+import com.sg.controller.VendingMachineController;
+import com.sg.dao.VendingMachineAuditDao;
+import com.sg.dao.VendingMachineAuditDaoFileImpl;
+import com.sg.dao.VendingMachineDao;
+import com.sg.dao.VendingMachineDaoImpl;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.sg.service.VendingMachineServiceLayer;
+import com.sg.service.VendingMachineServiceLayerImpl;
+import com.sg.ui.UserIO;
+import com.sg.ui.UserIOConsoleImpl;
+import com.sg.ui.VendingMachineView;
 
 /**
  *
  * @author Noah McElroy
  */
 public class App {
-        public static void main(String[] args){
+        
+    
+    
+    public static void main(String[] args)
+    {
+    AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("com.sg");
+        appContext.refresh();
+
+        VendingMachineController controller = appContext.getBean("vendingMachineController", VendingMachineController.class);
+        
+        try{
+            controller.run();
+        }
+        catch(Exception e)
+        {
+            System.out.println("FATAL ERRROR");
+        }
+    }
+    
+    /*public static void main(String[] args){
         // Instantiate the UserIO implementation
         UserIO myIo = new UserIOConsoleImpl();
         // Instantiate the View and wire the UserIO implementation into it
@@ -37,4 +58,6 @@ public class App {
         // Kick off the Controller
         controller.run();
     }
+*/
+    
 }
