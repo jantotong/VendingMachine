@@ -64,7 +64,7 @@ public class VendingMachineDaoTest {
         dao.addProduct("Candy", testValue2);
         
         
-        List<Product> testReturnedV = dao.displayAllProducts();
+        List<Product> testReturnedV = dao.getInventory();
         
         assertTrue(testReturnedV.contains(testValue1));
         assertTrue(testReturnedV.contains(testValue2));

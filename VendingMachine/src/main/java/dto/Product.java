@@ -6,6 +6,7 @@
 package dto;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  *
@@ -53,7 +54,47 @@ public class Product
     }
     
     
+    @Override
+public int hashCode() {
+    int hash = 7;
+    hash = 89 * hash + Objects.hashCode(this.name);
+    hash = 89 * hash + Objects.hashCode(this.price);
+    hash = 89 * hash + Objects.hashCode(this.qty);
+    return hash;
+}
+
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.price, other.price)) {
+            return false;
+        }
+        if (!Objects.equals(this.qty, other.qty)) {
+            return false;
+        }
+        
+        return true;
+    }    
     
+    @Override
+    public String toString() 
+    {
+        return "Produtct{" + "name=" + name + ", price=" + price + ", qty=" + qty + '}';
+    }
+
     
     
     
