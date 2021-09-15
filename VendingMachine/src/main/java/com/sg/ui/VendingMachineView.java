@@ -62,6 +62,7 @@ public class VendingMachineView
             io.print("\nDisplaying information about :");
             io.print("Item : " + product.getName());
             io.print("Price : "+ product.getPrice().toString());
+            io.print("Qty : " + product.getQty());
             io.print("");
         } else {
             io.print("\nNo such student.");
@@ -77,6 +78,7 @@ public class VendingMachineView
     public void addItemSuccessDisplay()
     {
         io.print("ADD ITEM SUCCESSFUL");
+        io.readString("Please hit enter to continue.");
     }
     public void removeItemBannerDisplay()
     {
@@ -87,6 +89,7 @@ public class VendingMachineView
     public void removeItemSuccessDisplay()
     {
         io.print("REMOVE ITEM SUCCESSFUL");
+        io.readString("Please hit enter to continue.");
     }
     
     
@@ -98,6 +101,7 @@ public class VendingMachineView
     public void editItemSuccessDisplay()
     {
         io.print("EDIT ITEM SUCCESSFUL");
+        io.readString("Please hit enter to continue.");
     }
     
     public String getItemSelection()
@@ -108,16 +112,19 @@ public class VendingMachineView
     
     public void displayExitBanner() {
         io.print("Good Bye!!!");
+        io.readString("Please hit enter to continue.");
     }
 
     public void displayUnknownCommandBanner() {
         io.print("Unknown Command!!!");
+        io.readString("Please hit enter to continue.");
     }
 
 
     public void displayErrorMessage(String errorMsg) {
         io.print("=== ERROR ===");
         io.print(errorMsg);
+        io.readString("Please hit enter to continue.");
     }
     
 
@@ -141,6 +148,7 @@ public class VendingMachineView
     public void buyItemSuccessDisplay()
     {
         io.print("YOU SUCCESSFULLY BOUGH AN ITEM");
+        io.readString("Please hit enter to continue.");
     }
 
     public BigDecimal getAmount() {
