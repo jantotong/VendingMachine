@@ -5,12 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eb48462-752e-4c28-be97-10c5e94a5fe5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineDuplicateNameException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachinePersistenceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineDataValidationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineDuplicateIdException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/VendingMachineDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/VendingMachineServiceLayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/VendingMachineView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/VendingMachineView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/VendingMachineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/VendingMachineController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VendingMachineAuditDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/VendingMachineAuditDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VendingMachineAuditDaoFileImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/VendingMachineAuditDaoFileImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VendingMachineDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/VendingMachineDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VendingMachineDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/VendingMachineDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/VendingMachinePersistenceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/VendingMachinePersistenceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Change.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Change.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/InsufficientFundsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/InsufficientFundsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/NoItemInventoryException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/NoItemInventoryException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VendingMachineDuplicateNameException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/VendingMachineDuplicateNameException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VendingMachinePersistenceException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/VendingMachinePersistenceException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VendingMachineServiceLayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/VendingMachineServiceLayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/service/VendingMachineServiceLayerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/VendingMachineServiceLayerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ui/UserIO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ui/UserIO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ui/UserIOConsoleImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ui/UserIOConsoleImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ui/VendingMachineView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ui/VendingMachineView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vendingMachine/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vendingMachine/App.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +85,7 @@
       <updated>1631651246141</updated>
       <workItem from="1631651247343" duration="8000" />
       <workItem from="1631651260622" duration="2544000" />
+      <workItem from="1631714346517" duration="643000" />
     </task>
     <servers />
   </component>
@@ -83,5 +102,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

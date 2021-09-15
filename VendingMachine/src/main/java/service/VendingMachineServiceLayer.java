@@ -5,6 +5,7 @@
  */
 package service;
 
+import dao.VendingMachinePersistenceException;
 import dto.Product;
 
 import java.util.List;

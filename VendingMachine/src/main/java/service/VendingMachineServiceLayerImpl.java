@@ -7,6 +7,7 @@ package service;
 
 import dao.VendingMachineAuditDao;
 import dao.VendingMachineDao;
+import dao.VendingMachinePersistenceException;
 import dto.Product;
 
 import java.util.List;
@@ -19,35 +20,35 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
     private VendingMachineDao dao;
     private VendingMachineAuditDao auditDao;
-    
+
 
     public VendingMachineServiceLayerImpl(VendingMachineDao dao) {
         this.dao = dao;
     }
-    
+
     public VendingMachineServiceLayerImpl(VendingMachineDao dao, VendingMachineAuditDao auditDao) {
         this.dao = dao;
         this.auditDao = auditDao;
     }
 
     @Override
-    public void addProduct(String name, Product product) throws VendingMachineDataValidationException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException 
+    public void addProduct(String name, Product product) throws VendingMachineDataValidationException, NoItemInventoryException, VendingMachineDuplicateNameException, VendingMachinePersistenceException
     {
         // this method creates red error marker
         // because it says that we should be 'aware' of :
-        
+
         // VendingMachinePersistenceException
-        
-        // and also beause 
-        
+
+        // and also beause
+
         // VendingMachineAuditDao AND VendingMachineAuditDaoImpl are empty for now.
-        
+
         // red here
         if (dao.getProduct(name) != null) {
             throw new VendingMachineDuplicateNameException(
                     "ERROR: Could not create item named "
-                    + product.getName()
-                    + " already exists");
+                            + product.getName()
+                            + " already exists");
         }
 
 
@@ -62,10 +63,10 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
 
     }
-    
+
     @Override
     public List<Product> DisplayAllProduct() throws NoItemInventoryException, VendingMachinePersistenceException {
-        return dao.getInventory()
+        return dao.getInventory();
     }
 
     @Override
