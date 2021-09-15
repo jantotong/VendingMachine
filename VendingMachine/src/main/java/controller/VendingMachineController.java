@@ -7,6 +7,12 @@ package controller;
 
 import dao.VendingMachinePersistenceException;
 import dto.Product;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import service.InsufficientFundsException;
+import service.NoItemInventoryException;
+import service.VendingMachineDataValidationException;
 import service.VendingMachineDuplicateNameException;
 import service.VendingMachineServiceLayer;
 import ui.UserIO;
@@ -81,15 +87,25 @@ public class VendingMachineController {
                 service.addProduct(item.getName(), item);
                 view.addItemSuccessDisplay();
                 hasErrors = false;
-            } catch (VendingMachineDuplicateNameException  | VendingMachineDataValidationException e) {
+            } catch (VendingMachineDuplicateNameException e) {
                 hasErrors = true;
                 view.displayErrorMessage(e.getMessage());
+            } catch (VendingMachineDataValidationException ex) {
+                hasErrors = true;
+                view.displayErrorMessage(ex.getMessage());
+            } catch (NoItemInventoryException ex) {
+                hasErrors = true;
+                view.displayErrorMessage(ex.getMessage());
             }
         } while (hasErrors);
     }
 
-    private void getInventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void getInventory() throws VendingMachinePersistenceException, NoItemInventoryException {
+        view.getInventoryBannerDisplay();
+        List<Product> allProducts = service.DisplayAllProduct();
+        for (Product allProduct : allProducts) {
+            view.displayProduct(allProduct);
+        }
     }
 
     private void buyItem() {
@@ -97,10 +113,31 @@ public class VendingMachineController {
     }
 
     private void editItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        view.editItemBannerDisplay();
+        String name = view.getItemName();
+        try {
+            if(service.getProduct(name) != null){
+                service.editProduct(name);
+            }
+        } catch (NoItemInventoryException ex) {
+            Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InsufficientFundsException ex) {
+            Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (VendingMachinePersistenceException ex) {
+            Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void removeItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        view.removeItemBannerDisplay();
+        String name = view.getItemName();
+        try {
+            service.removeProduct(name);
+            view.removeItemSuccessDisplay();
+        } catch (NoItemInventoryException ex) {
+            Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (VendingMachinePersistenceException ex) {
+            Logger.getLogger(VendingMachineController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

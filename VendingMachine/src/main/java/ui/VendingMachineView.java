@@ -74,7 +74,7 @@ public class VendingMachineView
     {
         io.print("ADD ITEM SUCCESSFUL");
     }
-    public void removeItemBannerDisplay(List<Product> items)
+    public void removeItemBannerDisplay()
     {
 
         io.print("==== REMOVE ITEM ====");
@@ -121,6 +121,10 @@ public class VendingMachineView
     {
         io.print("============================");
         io.print("========= INVENTORY ========");
+    }
+
+    public String getItemName() {
+        return io.readString("Enter a product name");
     }
     
     

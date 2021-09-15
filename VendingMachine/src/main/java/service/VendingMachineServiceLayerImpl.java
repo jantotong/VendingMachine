@@ -83,7 +83,7 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
 
     @Override
     public Product editProduct(String name) throws NoItemInventoryException, VendingMachinePersistenceException {
-        throw new UnsupportedOperationException("No Support Yet");
+        return dao.editProduct(name);
     }
 
     private void validateProductData(Product item) throws VendingMachineDataValidationException {

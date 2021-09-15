@@ -9,7 +9,7 @@ package service;
  *
  * @author pierre
  */
-class VendingMachineDataValidationException extends Exception {
+public class VendingMachineDataValidationException extends Exception {
      public VendingMachineDataValidationException(String message) {
         super(message);
     }
