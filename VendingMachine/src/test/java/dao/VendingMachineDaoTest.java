@@ -6,6 +6,8 @@
 package dao;
 
 import dto.Product;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.AfterAll;
@@ -20,13 +22,15 @@ import org.junit.jupiter.api.Test;
  * @author me
  */
 public class VendingMachineDaoTest {
-    static VendingMachineDao dao;
+    
+    private VendingMachineDao dao;
+    
     public VendingMachineDaoTest() {
     }
     
     @BeforeAll
     public static void setUpClass() {
-        dao = new VendingMachineDaoImpl();
+        
     }
     
     @AfterAll
@@ -34,8 +38,10 @@ public class VendingMachineDaoTest {
     }
     
     @BeforeEach
-    public void setUp() {
-        dao = new VendingMachineDaoImpl();
+    public void setUp() throws IOException {
+        String fileName = "testVending";
+        new FileWriter(fileName);
+        dao = new VendingMachineDaoImpl(fileName);
     }
     
     @AfterEach
@@ -43,13 +49,31 @@ public class VendingMachineDaoTest {
     }
 
     @Test
-    public void testDisplay() throws VendingMachinePersistenceException{
-        List<Product> DisplayAllProduct = dao.displayAllProducts();
-        int initialCount = DisplayAllProduct.size();
-        assertTrue(initialCount >= 0);//The count should never be negative
+    public void testDisplay() throws VendingMachinePersistenceException
+    {
+        Product testValue1 = new Product("Chocolate");
+        testValue1.setPrice(BigDecimal.ONE);
+        testValue1.setQty(10);
+        
+        dao.addProduct("Chocolate", testValue1);
+        
+        Product testValue2 = new Product("Candy");
+        testValue2.setPrice(BigDecimal.ONE);
+        testValue2.setQty(10);
+        
+        dao.addProduct("Candy", testValue2);
+        
+        
+        List<Product> testReturnedV = dao.displayAllProducts();
+        
+        assertTrue(testReturnedV.contains(testValue1));
+        assertTrue(testReturnedV.contains(testValue2));
+        assertTrue(testReturnedV.size() == 2);
+        
+        
     
     }
-    
+    /*
     @Test
     public void testAddProduct() throws VendingMachinePersistenceException{
         List<Product> DisplayAllProduct = dao.displayAllProducts();
@@ -86,4 +110,5 @@ public class VendingMachineDaoTest {
         List<Product> inventory = dao.getInventory();
         assertTrue(inventory.contains(popcorn));
     }
+*/
 }

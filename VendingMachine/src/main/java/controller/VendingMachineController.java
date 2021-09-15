@@ -34,7 +34,7 @@ public class VendingMachineController {
         this.service = slayer;
     }
 
-    public void run() {
+    public void run() throws NoItemInventoryException {
 
         boolean keepGoing = true;
         int menuSelection = 0;
